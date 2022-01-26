@@ -11,4 +11,4 @@ Create the wavelet filters by running `python build-filters.py`
 
 **To run a synthesis**:
 - Grayscale images: `python synthesis/gray.py --plot`
-- Color images: `python synthesis/color.py --plot'
+- Color images: `python synthesis/color.py --plot
