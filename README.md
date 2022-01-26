@@ -10,5 +10,5 @@ Code for the paper: "Generalized Rectifier Wavelet Covariance Model For texture 
 Create the wavelet filters by running `python build-filters.py`
 
 **To run a synthesis**:
-- Grayscale images: `python synthesis/gray.py --plot`
-- Color images: `python synthesis/color.py --plot`
+- Grayscale images: `python synthesis/gray.py`
+- Color images: `python synthesis/color.py`
