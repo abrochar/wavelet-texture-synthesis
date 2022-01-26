@@ -157,8 +157,8 @@ class ALPHA(object):
                                         idx_la2.append(A*L*J*c2+A*L*j2+A*l2)
                                         shifted.append(0)
                                         nb_moments += 1
-
-        print('number of moments (without low-pass and harr): ', nb_moments)
+        if self.chunk_id == 0:
+            print('number of moments (without low-pass and harr): ', nb_moments)
 
         idx_wph = dict()
         idx_wph['la1'] = torch.tensor(idx_la1).type(torch.long)
