@@ -7,4 +7,8 @@ Code for the paper: "Generalized Rectifier Wavelet Covariance Model For texture 
 - Kymatio (`pip install kymatio`) to create the Morlet wavelet filters.
 - Numpy, scipy, scikit-image, PIL, tqdm, matplotlib
 
-Create the wavelet filters by running 'python build-filters.py'
+Create the wavelet filters by running `python build-filters.py`
+
+**To run a synthesis**:
+- Grayscale images: `python synthesis/gray.py --plot`
+- Color images: `python synthesis/color.py --plot'
