@@ -4,4 +4,6 @@ Code for the paper: "Generalized Rectifier Wavelet Covariance Model For texture 
 
 **Requirements**:
 - Pytorch (version >=1.8.0)
-- Kymatio (`pip install kymatio`) to create the Morlet wavelet filters
+- Kymatio (`pip install kymatio`) to create the Morlet wavelet filters.
+- Numpy, scipy, scikit-image, PIL, tqdm
+
