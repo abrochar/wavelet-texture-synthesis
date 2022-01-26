@@ -1,20 +1,15 @@
-
 import os
 #os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 import numpy as np
 import torch
-import torch.nn as nn
 import matplotlib.pyplot as plt
 from load_image import load_image_color
-import scipy.io as sio
-import scipy.interpolate
 import sys
 import math
 import argparse
 sys.path.append(os.getcwd())
 from routine_color import *
 from hist import *
-from PIL import Image
 
 torch.backends.cudnn.deterministic = True
 torch.manual_seed(999)
@@ -31,32 +26,28 @@ parser.add_argument('--model', default='alpha')
 parser.add_argument('--J', type=int, default=5)
 parser.add_argument('--L', type=int, default=4)
 parser.add_argument('--dj', type=int, default=4)
-parser.add_argument('--dk', type=int, default=0)
-parser.add_argument('--dn', type=int, default=0)
 parser.add_argument('--A', type=int, default=4)
 parser.add_argument('--A_prime', type=int, default=1)
 parser.add_argument('--wavelets', default='morlet')
 parser.add_argument('--shift', default='samec') # 'samec' or 'all'
 parser.add_argument('--nb_chunks', type=int, default=11)
-parser.add_argument('--nb_restarts', type=int, default=0)
+parser.add_argument('--nb_restarts', type=int, default=1)
 parser.add_argument('--nGPU', type=int, default=1)
 parser.add_argument('--maxite', type=int, default=500)
 parser.add_argument('--factr', type=int, default=1e-3)
 parser.add_argument('--nb_syn', type=int, default=1)
-parser.add_argument('--hist', default=True, action='store_true')
-parser.add_argument('--save', default=True, action='store_true')
-parser.add_argument('--plot', default=False, action='store_true')
+parser.add_argument('--hist', action='store_false')
+parser.add_argument('--save', action='store_true')
+parser.add_argument('--plot', action='store_false')
 args = parser.parse_args()
 
 
 L = args.L
 dj = args.dj
-dl = L
-dk = args.dk
-dn = args.dn
 A = args.A
 A_prime = args.A_prime
 wavelets = args.wavelets
+shift = args.shift
 nb_chk = args.nb_chunks
 nb_restarts = args.nb_restarts
 nGPU = args.nGPU
@@ -96,8 +87,10 @@ for syn in range(args.nb_syn):
     wph_ops = dict()
     for chk_id in range(nb_chk):
         devid = opid % nGPU
-        wph_op = ALPHA(M, N, J, L, A, A_prime, dj, dl, nb_chk, chk_id,
-                       wavelets=wavelets, devid=devid)
+        wph_op = ALPHA(M, N, J, L, A, A_prime, dj,
+                       shift,
+                       nb_chk, chk_id,
+                       wavelets, devid)
         wph_op = wph_op.cuda()
         wph_ops[chk_id] = wph_op
         im_dev = im.to(devid)

@@ -1,19 +1,15 @@
 import numpy as np
 import torch
-import torch.nn as nn
 import matplotlib.pyplot as plt
 from load_image import load_image_gray
-#from torch.autograd import grad
-import scipy.io as sio
-#import scipy.interpolate
 import sys
 import os
 import math
 import argparse
 sys.path.append(os.getcwd())
 from routine import call_lbfgs2_routine
-from PIL import Image
 from hist import *
+
 torch.backends.cudnn.deterministic = True
 torch.manual_seed(999)
 torch.cuda.manual_seed_all(999)
@@ -39,9 +35,9 @@ parser.add_argument('--nGPU', type=int, default=1)
 parser.add_argument('--maxite', type=int, default=500)
 parser.add_argument('--factr', type=float, default=1e-3)
 parser.add_argument('--nb_syn', type=int, default=1)
-parser.add_argument('--hist', default=True, action='store_true')
-parser.add_argument('-s', '--save', default=False, action='store_true')
-parser.add_argument('-p', '--plot', default=False, action='store_true')
+parser.add_argument('-h', '--hist', action='store_false')
+parser.add_argument('-s', '--save', action='store_true')
+parser.add_argument('-p', '--plot', action='store_false')
 args = parser.parse_args()
 
 
