@@ -13,4 +13,4 @@ Create the wavelet filters by running `python build-filters.py`
 - Grayscale images: `python synthesis/gray.py`
 - Color images: `python synthesis/color.py`
 
-Specify the input image with the argument --image (e.g. `python synthesis/color.py --image honeycomb`). The argument --save stores the synthesis in the 'results' folder. Other arguments, to specify the model, can be found in 'synthesis/gray.py' and 'synthesis/color.py'.
+Specify the input image with the argument --image (e.g. `python synthesis/color.py --image honeycomb`). The argument --save stores the synthesis in the 'results' folder, in .npy format. Other arguments, to specify the model, can be found in 'synthesis/gray.py' and 'synthesis/color.py'.
