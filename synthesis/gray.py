@@ -30,7 +30,7 @@ parser.add_argument('-ap', '--A_prime', type=int, default=1)
 parser.add_argument('--shift', default='all')
 parser.add_argument('--wavelets', default='morlet')
 parser.add_argument('--nb_chunks', type=int, default=3)
-parser.add_argument('-r', '--nb_restarts', type=int, default=2)
+parser.add_argument('-r', '--nb_restarts', type=int, default=4)
 parser.add_argument('--nGPU', type=int, default=1)
 parser.add_argument('--maxite', type=int, default=500)
 parser.add_argument('--factr', type=float, default=1e-3)
@@ -122,6 +122,8 @@ if args.plot:
     plt.show()
 
 if args.save:
+    if not os.path.exists('./results'):
+        os.mkdir('./results')
     name = args.image + '_gray.npy'
     np.save('./results/'+name, im_opt)
 

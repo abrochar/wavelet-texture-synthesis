@@ -123,5 +123,7 @@ if args.plot:
     plt.imshow(im_opt, vmin=0, vmax=1)
     plt.show()
 if args.save:
+    if not os.path.exists('./results'):
+        os.mkdir('./results')
     name = args.image + '_color.npy'
     np.save('./results/'+name, im_opt)
