@@ -16,6 +16,6 @@ Create the wavelet filters by running `python build-filters.py`
 Specify the input image with the argument --image (e.g. `python synthesis/color.py --image honeycomb`). The argument --save stores the synthesis in the 'results' folder, in .npy format. Other arguments, to specify the model, can be found in 'synthesis/gray.py' and 'synthesis/color.py'.
 
 **To generate a synthesis using PS model**:
-- Grayscale images: 
-- Color images: 
+- Grayscale images: ps/demo_gray.m 
+- Color images: ps/demo_color.m
 p.s. You need download the original Matlab code (http://www.cns.nyu.edu/~lcv/texture/)
