@@ -18,4 +18,27 @@ Specify the input image with the argument --image (e.g. `python synthesis/color.
 **To generate a synthesis using PS model**:
 - Grayscale images: ps/demo_gray.m 
 - Color images: ps/demo_color.m
+
 p.s. You need download the original Matlab code (http://www.cns.nyu.edu/~lcv/texture/)
+
+**To generate a synthesis using RF model**:
+- Grayscale images: rf/do_synthesis0.sh
+- Color images: rf/do_synthesis01.sh
+
+p.s. You need install the following packages using conda:
+
+- theano,  version 1.0.4
+- matplotlib, scikit-image
+- Lasagne-0.2.dev1, install via pip: 
+
+```
+ pip3  install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip # Lasagne-0.2.dev1
+```
+
+- To use GPU, configure ~/.theanorc
+```
+[global]
+floatX = float32
+device = cuda
+```
+
