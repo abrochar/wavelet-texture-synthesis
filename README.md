@@ -27,14 +27,18 @@ p.s. You need download the original Matlab code (http://www.cns.nyu.edu/~lcv/tex
 
 p.s. You need install the following packages using conda:
 
-conda3 install theano # version 1.0.4
-conda3 install matplotlib
-conda3 install scikit-image
-pip3  install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip # Lasagne-0.2.dev1
+- theano,  version 1.0.4
+- matplotlib, scikit-image
+- Lasagne-0.2.dev1, install via pip: 
 
-# To use GPU, configure ~/.theanorc
+```
+ pip3  install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip # Lasagne-0.2.dev1
+```
+
+- To use GPU, configure ~/.theanorc
+```
 [global]
 floatX = float32
 device = cuda
-
+```
 
