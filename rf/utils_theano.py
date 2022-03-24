@@ -137,15 +137,3 @@ def build_model_multiscale_gray(IMAGE_W, n_feature_maps, scales, nonlinearity=la
     net['conv1_1'] = ConcatLayer(multiple_scales)
     return net
 
-def build_model_multiscale_gray_torch(IMAGE_W, n_feature_maps, scales, nonlinearity=lasagne.nonlinearities.rectify):
-    net = {}
-    net['input'] = InputLayer((1, 1, IMAGE_W, IMAGE_W))
-
-    multiple_scales = [ConvLayer(net['input'], n_feature_maps, filter_size,\
-                                 W=lasagne.init.Uniform(std=np.sqrt(2.0/(n_feature_maps*filter_size*filter_size))),
-                                 b=None,
-                                 pad=filter_size//2, flip_filters=False,
-                                 nonlinearity=nonlinearity)
-                       for filter_size in scales]
-    net['conv1_1'] = ConcatLayer(multiple_scales)
-    return net
