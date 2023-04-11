@@ -42,3 +42,6 @@ floatX = float32
 device = cuda
 ```
 
+## License
+Releasing under an Apache-2.0 license.
+
